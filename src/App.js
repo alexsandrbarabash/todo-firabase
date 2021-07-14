@@ -1,10 +1,12 @@
 import React from 'react';
+import { Container } from '@material-ui/core';
+import RoutingContainer from './containers/routing-container';
 
 const App = () => {
   return (
-    <div className="App">
-      Hello World
-    </div>
+    <Container maxWidth="md">
+      <RoutingContainer/>
+    </Container>
   );
 };
 
