@@ -4,12 +4,12 @@ import { useHistory } from 'react-router-dom';
 
 const Home = () => {
   const history = useHistory();
-  const uid = useSelector(state => state.userReducer.uid);
+  const user = useSelector(state => state.userReducer.user);
   useEffect(() => {
-    if (!uid) {
+    if (!user) {
       history.push('/auth');
     }
-  }, [uid]);
+  }, [user]);
 
   return (
     <div>

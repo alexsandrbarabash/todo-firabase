@@ -1,0 +1,9 @@
+.app-bar-root {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.app-bar-root h6 {
+    margin-left: 15px;
+}
