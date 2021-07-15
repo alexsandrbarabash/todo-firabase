@@ -31,7 +31,9 @@ const App = () => {
 
       const unsubscribe = firestore
         .collection('users')
-        .doc(currentUser.uid).collection('tasks').onSnapshot(snapshot => {
+        .doc(currentUser.uid).collection('tasks')
+        // .where('title', '>=', 'sdf')
+        .onSnapshot(snapshot => {
           const tasks = snapshot.docs.map(doc => ({...doc.data(), id: doc.id}));
           dispatch(tasksChange(tasks));
         });
