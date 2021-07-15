@@ -1,8 +1,8 @@
 import {
   TASKS_CHANGE,
   USER_CHANGE,
-  CHANGE_SORT_BY_TITLE_CHANGE,
-  SORT_BY_STATUS,
+  SORT,
+  FILTER_BY_STATUS,
   SEARCH,
   CLEAR_FILTER
 } from '../constants/user-constant';
@@ -12,7 +12,8 @@ const defaultState = {
   tasks: [],
   search: '',
   showStatus: [true, false],
-  sortByTitle: 'asc'
+  sortOrder: 'asc',
+  sortField: 'title'
 };
 
 const reducer = (state = defaultState, action) => {
@@ -25,11 +26,11 @@ const reducer = (state = defaultState, action) => {
       return {
         ...state, tasks: action.payload
       };
-    case CHANGE_SORT_BY_TITLE_CHANGE:
+    case SORT:
       return {
-        ...state, sortByTitle: action.payload
+        ...state, sortOrder: action.payload.order, sortField: action.payload.sortField,
       };
-    case SORT_BY_STATUS:
+    case FILTER_BY_STATUS:
       return {
         ...state, showStatus: action.payload
       };
@@ -42,7 +43,8 @@ const reducer = (state = defaultState, action) => {
         ...state,
         search: '',
         showStatus: [true, false],
-        sortByTitle: 'asc'
+        sortOrder: 'asc',
+        sortField: 'title'
       };
     default:
       return state;

@@ -66,6 +66,9 @@ const FilterForm = () => {
               texts={[
                 'A-Z',
                 'Z-A',
+                'first not completed',
+                'first completed',
+
               ]}
               selectedSwitch={0}
               bgColor={'#fff'}

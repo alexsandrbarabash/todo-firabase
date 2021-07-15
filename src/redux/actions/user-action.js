@@ -1,8 +1,8 @@
 import {
   TASKS_CHANGE,
   USER_CHANGE,
-  CHANGE_SORT_BY_TITLE_CHANGE,
-  SORT_BY_STATUS,
+  SORT,
+  FILTER_BY_STATUS,
   SEARCH,
   CLEAR_FILTER
 } from '../constants/user-constant';
@@ -17,34 +17,46 @@ const tasksChange = (tasks) => ({
 });
 
 const changeSortByTitle = (value) => {
-  // value == 0
-  if (!value) {
+  if (value === 0) {
     return {
-      type: CHANGE_SORT_BY_TITLE_CHANGE, payload: 'asc'
+      type: SORT, payload: {sortField: 'title', order: 'asc'}
     };
   }
 
-  return {
-    type: CHANGE_SORT_BY_TITLE_CHANGE, payload: 'desc'
-  };
+  if (value === 1) {
+    return {
+      type: SORT, payload: {sortField: 'title', order: 'desc'}
+    };
+  }
+  if (value === 2) {
+    return {
+      type: SORT, payload: {sortField: 'status', order: 'asc'}
+    };
+  }
+
+  if (value === 3) {
+    return {
+      type: SORT, payload: {sortField: 'status', order: 'desc'}
+    };
+  }
 };
 
 const sortByStatus = (value) => {
 
   if (value === 1) {
     return {
-      type: SORT_BY_STATUS, payload: [true]
+      type: FILTER_BY_STATUS, payload: [true]
     };
   }
 
   if (value === 2) {
     return {
-      type: SORT_BY_STATUS, payload: [false]
+      type: FILTER_BY_STATUS, payload: [false]
     };
   }
 
   return {
-    type: SORT_BY_STATUS, payload: [true, false]
+    type: FILTER_BY_STATUS, payload: [true, false]
   };
 };
 

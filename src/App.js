@@ -12,10 +12,10 @@ const App = () => {
     const dispatch = useDispatch();
     const {
       user: currentUser,
-      sortByTitle,
       showStatus,
       search,
-      tasks: currentTasks
+      sortOrder,
+      sortField
     } = useSelector(state => state.userReducer);
     const authHandler = (user) => {
       dispatch(userChange(user));
@@ -39,7 +39,7 @@ const App = () => {
         .collection('users')
         .doc(currentUser.uid)
         .collection('tasks')
-        .orderBy('title', sortByTitle)
+        .orderBy(sortField, sortOrder)
         .onSnapshot(snapshot => {
           let tasks = snapshot.docs.map(doc => ({
             ...doc.data(),
@@ -53,7 +53,7 @@ const App = () => {
           dispatch(tasksChange(tasks));
         });
       return () => unsubscribe();
-    }, [currentUser, dispatch, sortByTitle, showStatus, search]);
+    }, [currentUser, dispatch, showStatus, search, sortOrder, sortField]);
 
     return (
       <>
