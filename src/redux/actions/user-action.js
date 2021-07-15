@@ -3,7 +3,8 @@ import {
   USER_CHANGE,
   CHANGE_SORT_BY_TITLE_CHANGE,
   SORT_BY_STATUS,
-  SEARCH
+  SEARCH,
+  CLEAR_FILTER
 } from '../constants/user-constant';
 
 const userChange = (user) => ({
@@ -51,4 +52,13 @@ const searchByTitle = (value) => ({
   type: SEARCH, payload: value
 });
 
-export { userChange, tasksChange, changeSortByTitle, sortByStatus, searchByTitle };
+const clearFilter = () => ({type: CLEAR_FILTER});
+
+export {
+  userChange,
+  tasksChange,
+  changeSortByTitle,
+  sortByStatus,
+  searchByTitle,
+  clearFilter
+};

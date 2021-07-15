@@ -1,19 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Box, Button, Typography } from '@material-ui/core';
 import TasksList from '../../components/tasks-list';
 import FilterForm from '../../components/filter-form';
+import withLogging from '../../hocs/with-login';
 
 const Home = () => {
-  const history = useHistory();
-
-  const user = useSelector(state => state.userReducer.user);
-  useEffect(() => {
-    if (!user) {
-      history.push('/auth');
-    }
-  }, [user, history]);
 
   return (
     <div>
@@ -31,4 +23,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withLogging(Home);

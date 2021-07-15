@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import CreateUpdateForm from '../../components/create-update-form/create-update-form';
 import { firestore } from '../../firebase';
 import TasksList from '../../components/tasks-list';
+import withLogging from '../../hocs/with-login';
 
 const CreatePage = () => {
   const [task, setTasks] = useState('');
@@ -43,4 +44,4 @@ const CreatePage = () => {
   );
 };
 
-export default CreatePage;
+export default withLogging(CreatePage);

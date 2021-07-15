@@ -4,6 +4,7 @@ import CreateUpdateForm from '../../components/create-update-form';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { firestore } from '../../firebase';
+import withLogging from '../../hocs/with-login';
 
 const UpdatePage = () => {
   const {id} = useParams();
@@ -58,4 +59,4 @@ const UpdatePage = () => {
   );
 };
 
-export default UpdatePage;
+export default withLogging(UpdatePage);

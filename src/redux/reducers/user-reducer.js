@@ -3,7 +3,8 @@ import {
   USER_CHANGE,
   CHANGE_SORT_BY_TITLE_CHANGE,
   SORT_BY_STATUS,
-  SEARCH
+  SEARCH,
+  CLEAR_FILTER
 } from '../constants/user-constant';
 
 const defaultState = {
@@ -35,6 +36,13 @@ const reducer = (state = defaultState, action) => {
     case SEARCH:
       return {
         ...state, search: action.payload
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        search: '',
+        showStatus: [true, false],
+        sortByTitle: 'asc'
       };
     default:
       return state;
