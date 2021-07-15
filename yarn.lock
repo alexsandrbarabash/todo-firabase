@@ -9662,6 +9662,11 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
+react-multi-switch-toggle@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-multi-switch-toggle/-/react-multi-switch-toggle-1.0.9.tgz#d2092202da3d13a611dea3f28d1496d91e4cbcea"
+  integrity sha512-onle3ax+ID89JmBbHDcXaketeUmys3aV6el8FylrZFqxhdvR6DdksULSf88znPYBKF6De81RvwHHmmuEXB/Ykg==
+
 react-redux@^7.2.4:
   version "7.2.4"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.4.tgz#1ebb474032b72d806de2e0519cd07761e222e225"
