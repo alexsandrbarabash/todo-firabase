@@ -6,25 +6,35 @@ import { auth } from '../../firebase';
 const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const authHandler = () => {
     console.log(password);
     auth.signInWithEmailAndPassword(email, password).then((data) => {
       console.log(data);
-    }).catch((e) => console.log(e.message));
+    }).then(() => setError(''))
+      .catch((e) => setError(e.message));
   };
 
   const registerHandler = () => {
-    auth.createUserWithEmailAndPassword(email, password);
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(() => setError(''))
+      .catch((e) => setError(e.message));
   };
 
   return (
     <Box mt={10}>
+
       <form>
         <Grid container spacing={3}>
           <Grid item xs={12} className={'center'}>
             <Typography variant="h3">
               Please Auth
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={'center'}>
+            <Typography color={'secondary'} variant={'subtitle1'}>
+              {error}
             </Typography>
           </Grid>
           <Grid item xs={12} className={'center'}>
