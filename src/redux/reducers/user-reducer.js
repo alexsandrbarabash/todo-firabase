@@ -1,24 +1,8 @@
-import { USER_CHANGE } from '../constants/user-constant';
+import { TASKS_CHANGE, USER_CHANGE } from '../constants/user-constant';
 
 const defaultState = {
   user: null,
-  tasks: [
-    {
-      id: 1,
-      title: 'item1',
-      status: false
-    },
-    {
-      id: 2,
-      title: 'item2',
-      status: false
-    },
-    {
-      id: 3,
-      title: 'item3',
-      status: false
-    }
-  ]
+  tasks: []
 };
 
 const reducer = (state = defaultState, action) => {
@@ -26,6 +10,10 @@ const reducer = (state = defaultState, action) => {
     case USER_CHANGE:
       return {
         ...state, user: action.payload
+      };
+    case TASKS_CHANGE:
+      return {
+        ...state, tasks: action.payload
       };
     default:
       return state;

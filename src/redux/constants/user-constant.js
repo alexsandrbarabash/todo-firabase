@@ -1,3 +1,5 @@
 const USER_CHANGE = 'USER_CHANGE';
 
-export { USER_CHANGE };
+const TASKS_CHANGE = 'TASKS_CHANGE';
+
+export { USER_CHANGE, TASKS_CHANGE };

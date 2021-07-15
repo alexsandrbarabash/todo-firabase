@@ -1,7 +1,12 @@
-import { USER_CHANGE } from '../constants/user-constant';
+import { TASKS_CHANGE, USER_CHANGE } from '../constants/user-constant';
 
 const userChange = (user) => ({
   type: USER_CHANGE, payload: user
 });
 
-export { userChange };
+
+const tasksChange = (tasks) => ({
+  type: TASKS_CHANGE, payload: tasks
+});
+
+export { userChange, tasksChange };

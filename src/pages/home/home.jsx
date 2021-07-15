@@ -7,12 +7,13 @@ import FilterForm from '../../components/filter-form';
 
 const Home = () => {
   const history = useHistory();
+
   const user = useSelector(state => state.userReducer.user);
   useEffect(() => {
     if (!user) {
       history.push('/auth');
     }
-  }, [user]);
+  }, [user, history]);
 
   return (
     <div>

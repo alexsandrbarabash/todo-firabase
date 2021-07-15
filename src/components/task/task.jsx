@@ -3,8 +3,9 @@ import { Paper, Box, Grid, Typography, IconButton, Checkbox } from '@material-ui
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import './task.css';
+import { Link } from 'react-router-dom';
 
-const Task = () => {
+const Task = ({status, onSetStatus, title, onDelete, id}) => {
   return (
     <Box mt={4}>
       <Paper elevation={4}>
@@ -12,23 +13,28 @@ const Task = () => {
           <Grid container className={'center'}>
             <Grid item xs={9}>
               <Typography className={'title-task-color'} variant="body1">
-                sfd
+                {title}
               </Typography>
             </Grid>
             <Grid item xs={1}>
               <Checkbox
-                defaultChecked
                 color="default"
-                checked={false}
+                checked={status}
+                onChange={onSetStatus}
+                defaultChecked={false}
               />
             </Grid>
             <Grid item xs={1}>
-              <IconButton><DeleteIcon/></IconButton>
+              <IconButton onClick={onDelete}>
+                <DeleteIcon/>
+              </IconButton>
             </Grid>
             <Grid item xs={1}>
-              <IconButton>
-                <EditIcon/>
-              </IconButton>
+              <Link to={`/update-task/${id}`}>
+                <IconButton>
+                  <EditIcon/>
+                </IconButton>
+              </Link>
             </Grid>
           </Grid>
         </Box>
