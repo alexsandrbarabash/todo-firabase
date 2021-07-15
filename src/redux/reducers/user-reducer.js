@@ -1,8 +1,11 @@
-import { TASKS_CHANGE, USER_CHANGE } from '../constants/user-constant';
+import { TASKS_CHANGE, USER_CHANGE, CHANGE_SORT_BY_TITLE_CHANGE, SORT_BY_STATUS } from '../constants/user-constant';
 
 const defaultState = {
   user: null,
-  tasks: []
+  tasks: [],
+  search: '',
+  showStatus: [true, false],
+  sortByTitle: 'asc'
 };
 
 const reducer = (state = defaultState, action) => {
@@ -14,6 +17,14 @@ const reducer = (state = defaultState, action) => {
     case TASKS_CHANGE:
       return {
         ...state, tasks: action.payload
+      };
+    case CHANGE_SORT_BY_TITLE_CHANGE:
+      return {
+        ...state, sortByTitle: action.payload
+      };
+    case SORT_BY_STATUS:
+      return {
+        ...state, showStatus: action.payload
       };
     default:
       return state;

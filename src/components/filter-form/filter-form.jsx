@@ -2,9 +2,13 @@ import React from 'react';
 import { Grid, IconButton, TextField, Box } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import MultiSwitch from 'react-multi-switch-toggle';
+import { useDispatch } from 'react-redux';
 import './filter-form.css';
+import { changeSortByTitle, sortByStatus } from '../../redux/actions/user-action';
 
 const FilterForm = () => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <form>
@@ -39,6 +43,7 @@ const FilterForm = () => {
               height={'30px'}
               fontSize={'16px'}
               borderColor={'transparent'}
+              onToggleCallback={(value) => dispatch(sortByStatus(value))}
             />
           </Grid>
         </Grid>
@@ -60,6 +65,7 @@ const FilterForm = () => {
               height={'30px'}
               fontSize={'16px'}
               borderColor={'transparent'}
+              onToggleCallback={(value) => dispatch(changeSortByTitle(value))}
             />
           </Grid>
         </Grid>
