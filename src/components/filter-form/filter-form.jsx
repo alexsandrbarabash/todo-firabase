@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, IconButton, TextField, Box } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import MultiSwitch from 'react-multi-switch-toggle';
 import { useDispatch } from 'react-redux';
+import { changeSortByTitle, sortByStatus, searchByTitle } from '../../redux/actions/user-action';
 import './filter-form.css';
-import { changeSortByTitle, sortByStatus } from '../../redux/actions/user-action';
 
 const FilterForm = () => {
   const dispatch = useDispatch();
-
+  const [searchText, setSearchText] = useState('');
+  const searchHandler = (e) => {
+    e.preventDefault();
+    dispatch(searchByTitle(searchText));
+  };
   return (
     <>
-      <form>
+
+      <form onSubmit={searchHandler}>
         <Grid container>
           <Grid item xs={11}>
-            <TextField required className={'form-input'} label={'Search'}/>
+            <TextField
+              className={'form-input'}
+              label={'Search'}
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
           </Grid>
           <Grid item xs={1}>
             <Box pb={1}>
@@ -25,6 +35,7 @@ const FilterForm = () => {
           </Grid>
         </Grid>
       </form>
+
       <Box mt={2}>
         <Grid container>
           <Grid item xs={12} className={'multi-switch-wrapper'}>

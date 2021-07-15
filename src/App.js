@@ -10,7 +10,13 @@ import CustomAppBar from './components/app-bar';
 const App = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const {user: currentUser, sortByTitle, showStatus, search} = useSelector(state => state.userReducer);
+    const {
+      user: currentUser,
+      sortByTitle,
+      showStatus,
+      search,
+      tasks: currentTasks
+    } = useSelector(state => state.userReducer);
     const authHandler = (user) => {
       dispatch(userChange(user));
       if (user) {
@@ -33,18 +39,21 @@ const App = () => {
         .collection('users')
         .doc(currentUser.uid)
         .collection('tasks')
-        // .where('title', '>=', '')
-        // .where('status', 'in', showStatus) // if i try use 'in' in query. I have index error
         .orderBy('title', sortByTitle)
         .onSnapshot(snapshot => {
-          const tasks = snapshot.docs.map(doc => ({
+          let tasks = snapshot.docs.map(doc => ({
             ...doc.data(),
             id: doc.id
-          })).filter((item) => showStatus.includes(item.status));
+          }))
+            .filter((item) => showStatus.includes(item.status))
+            .filter(({title}) => (
+              title.toUpperCase().indexOf(search.toUpperCase()) != -1
+            ));
+
           dispatch(tasksChange(tasks));
         });
       return () => unsubscribe();
-    }, [currentUser, dispatch, sortByTitle, showStatus]);
+    }, [currentUser, dispatch, sortByTitle, showStatus, search]);
 
     return (
       <>

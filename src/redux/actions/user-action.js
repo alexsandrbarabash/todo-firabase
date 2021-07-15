@@ -1,4 +1,10 @@
-import { TASKS_CHANGE, USER_CHANGE, CHANGE_SORT_BY_TITLE_CHANGE, SORT_BY_STATUS } from '../constants/user-constant';
+import {
+  TASKS_CHANGE,
+  USER_CHANGE,
+  CHANGE_SORT_BY_TITLE_CHANGE,
+  SORT_BY_STATUS,
+  SEARCH
+} from '../constants/user-constant';
 
 const userChange = (user) => ({
   type: USER_CHANGE, payload: user
@@ -41,4 +47,8 @@ const sortByStatus = (value) => {
   };
 };
 
-export { userChange, tasksChange, changeSortByTitle, sortByStatus };
+const searchByTitle = (value) => ({
+  type: SEARCH, payload: value
+});
+
+export { userChange, tasksChange, changeSortByTitle, sortByStatus, searchByTitle };
